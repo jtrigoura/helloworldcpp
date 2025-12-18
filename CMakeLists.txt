@@ -47,6 +47,13 @@ file(GLOB_RECURSE COMMON_SRC
 )
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
+
+# Convention for executables and libraries
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+message ("${CMAKE_BINARY_DIR} Here")
+
 add_executable(myfirstmain ${COMMON_SRC})
 
 set_target_properties(myfirstmain PROPERTIES
@@ -54,12 +61,7 @@ set_target_properties(myfirstmain PROPERTIES
   CXX_STANDARD_REQUIRED YES
 )
 
-# Put all executables in the same directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-# Convention for executables and libraries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 message("************************************************************")
 message("**** Building in ${CMAKE_BUILD_TYPE} mode ")
